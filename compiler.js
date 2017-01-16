@@ -49,6 +49,14 @@ const validateToken = function(ctx, headers, cb) {
 
     var token = authorizationHeader[1];
     var decoded = jwt.decode(token, { complete: true });
+    if (!decoded) {
+      return cb({
+        status: 401,
+        error: 'UnauthorizedError',
+        error_description: 'Invalid token.'
+      });
+    }
+
     if (!decoded.header || decoded.header.alg !== 'RS256') {
       return cb({
         status: 401,

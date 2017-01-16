@@ -40,6 +40,24 @@ module.exports = function(ctx, req, res) {
 }
 ```
 
+Using express:
+
+```js
+'use latest';
+
+import express from 'express';
+import bodyParser from 'body-parser';
+import { fromExpress } from 'webtask-tools';
+
+const app = express();
+app.use(bodyParser.json());
+app.get('/', (req, res) => {
+  res.json({ user: req.user });
+});
+
+module.exports = fromExpress(app);
+```
+
 ## How do I get an access token from Auth0?
 
 Start by creating an API [here](https://manage.auth0.com/#/apis). The `Identifier` you set here is the value you will use for `AUTH0_AUDIENCE` (eg: `urn:myapi`).
