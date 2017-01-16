@@ -26,7 +26,7 @@ The compiler will validate the signature of the token, the audience and the issu
 Using the simple signature:
 
 ```js
-module.exports = function(ctx, cb) {-
+module.exports = function(ctx, cb) {
   cb(null, 'Hello ' + ctx.user.sub + '. Here are your scopes: ' + ctx.user.scope);
 }
 ```
@@ -34,7 +34,7 @@ module.exports = function(ctx, cb) {-
 Using request/response:
 
 ```js
-module.exports = function(ctx, req, res) {-
+module.exports = function(ctx, req, res) {
   res.writeHead(200);
   res.end('Hello ' + req.user.sub + '. Here are your scopes: ' + req.user.scope);
 }
